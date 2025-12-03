@@ -1,24 +1,28 @@
 {
   "name": "invisiblehand",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "type": "module",
   "main": "script.user.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "release": "dotenv -e .env -- release-it"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@release-it/conventional-changelog": "^10.0.2",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "autoprefixer": "^10.4.22",
+    "dotenv-cli": "^11.0.0",
     "postcss": "^8.5.6",
+    "release-it": "^19.0.6",
     "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3",
     "vite": "^7.2.4",
