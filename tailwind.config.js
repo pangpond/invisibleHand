@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  important: '#sp-root',
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -50,6 +51,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brand: "#f15b28",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -6,7 +6,8 @@
   },
   "github": {
     "release": true,
-    "releaseName": "v${version}"
+    "releaseName": "v${version}",
+    "assets": ["dist/invisiblehand.user.js"]
   },
   "npm": {
     "publish": false

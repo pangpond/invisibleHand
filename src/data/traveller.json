@@ -1,0 +1,40 @@
+[
+  {
+    "contact": { "mobile": "0891234567", "email": "abc@xyz.com" },
+    "passport": {
+      "document_type": "P",
+      "issuing_state": "NEL",
+      "surname": "SONK",
+      "given_names": "CALLIESKKSSEEKKE KK",
+      "passport_number": "422016774",
+      "nationality": "USA",
+      "date_of_birth": "1988-10-17",
+      "sex": "F",
+      "date_of_expiry": "2027-12-23",
+      "raw_mrz": "P<NELSONK<<CALLIESKKSSEEKKE<KK<<<<<<<<<<<<<<\n4220167749USA8810174F2712239572615374<585990",
+      "confidence": 58.960644,
+      "response_ms": 3502,
+      "face_s3_url": "https://s3.ap-southeast-1.amazonaws.com/nextschool.com/students/285/20251208071039_422016774.jpg",
+      "register_status": null
+    }
+  },
+  {
+    "contact": { "mobile": "0891234567", "email": "abc@xyz.com" },
+    "passport": {
+      "document_type": "P",
+      "issuing_state": "KGZ",
+      "surname": "ASANOV",
+      "given_names": "USONK",
+      "passport_number": "PEQOQ0000",
+      "nationality": "KGZ",
+      "date_of_birth": "2000-05-09",
+      "sex": "M",
+      "date_of_expiry": "2020-12-09",
+      "raw_mrz": "PSKGZASANOV<<USONK<<<<<<<<<<<<<<<<<<<<<<<<<<\nPEQOQ00007KGZ0005094M20120982090520000000000",
+      "confidence": 41.90774,
+      "response_ms": 1360,
+      "face_s3_url": "https://s3.ap-southeast-1.amazonaws.com/nextschool.com/students/285/20251208072644_PEQOQ0000.jpg",
+      "register_status": null
+    }
+  }
+]
