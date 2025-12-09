@@ -30,13 +30,18 @@ const CONFIG = {
   AUTO_LOAD: true,
 };
 
+const buttonOuterClass =
+  "relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-lg font-medium text-pretty text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 shadow-lg hover:shadow-purple-500/50 dark:shadow-lg dark:hover:shadow-purple-800/80";
+const buttonInnerClass =
+  "relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent group-hover:text-white dark:group-hover:text-white";
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const togglePane = () => setIsOpen(!isOpen);
+  const togglePane = () => setIsOpen((prev) => !prev);
 
   const fetchData = () => {
     setLoading(true);
@@ -84,39 +89,21 @@ function App() {
 
   return (
     <>
-      {/* Floating Toggle Button */}
-      <div
-        className={`
-          fixed top-1/2 right-0 -translate-y-1/2 z-[2147483647]
-          transition-all duration-300 ease-in-out
-          ${isOpen ? "translate-x-full opacity-0" : "translate-x-0 opacity-100"}
-        `}
-      >
-        <Button
-          onClick={togglePane}
-          variant="secondary"
-          size="icon"
-          className="rounded-l-3xl rounded-r-none h-24 w-20 shadow-2xl border-l border-y border-border/50 bg-background/90 backdrop-blur-md hover:bg-accent/90"
-        >
-          <PanelRightOpen className="h-12 w-12 text-brand" />
-        </Button>
-      </div>
-
       {/* Glassmorphic Side Pane */}
       <div
         id="sp-pane"
         className={`
-          fixed top-0 right-0
+          fixed top-0
           w-[500px] h-screen
-          bg-background/95 backdrop-blur-xl
+          bg-[#f8fafc]
           z-[2147483647] shadow-2xl
-          transition-transform duration-300 ease-out
-          flex flex-col border-l border-border/50
-          ${isOpen ? "translate-x-0" : "translate-x-full"}
+          transition-all duration-300 ease-out
+          flex flex-col border-l border-border/50 pointer-events-auto
+          ${isOpen ? "right-0" : "-right-[500px]"}
         `}
       >
         {/* Header */}
-        <div className="p-10 pb-8 flex justify-between items-center bg-background/60 backdrop-blur-md">
+        <div className="p-10 pb-8 flex justify-between items-center bg-background/60">
           <div className="flex items-center gap-8">
             <Avatar className="h-32 w-32 ring-4 ring-background shadow-xl">
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -124,7 +111,9 @@ function App() {
             </Avatar>
             <div className="space-y-2">
               <h2 className="text-5xl font-bold tracking-tight text-foreground">
-                {CONFIG.PANE_TITLE}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 from-10% via-pink-500 to-purple-500 to-90%">
+                  {CONFIG.PANE_TITLE}
+                </span>
               </h2>
               <p className="text-2xl text-muted-foreground font-medium">
                 Welcome back, User
@@ -134,22 +123,22 @@ function App() {
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={fetchData}
               disabled={loading}
-              className="h-20 w-20 rounded-full hover:bg-muted/50"
+              className="h-16 w-16 rounded-full hover:bg-muted/50 text-gray-400"
             >
               <RefreshCw
-                className={`h-10 w-10 ${loading ? "animate-spin" : ""}`}
+                className={`h-8 w-8 ${loading ? "animate-spin" : ""}`}
               />
             </Button>
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={togglePane}
-              className="h-20 w-20 rounded-full hover:bg-muted/50"
+              className="h-16 w-16 rounded-full hover:bg-muted/50 text-gray-400"
             >
-              <PanelRightClose className="h-10 w-10" />
+              <PanelRightClose className="h-8 w-8" />
             </Button>
           </div>
         </div>
@@ -174,7 +163,7 @@ function App() {
               <div className="grid gap-4 md:grid-cols-2">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-6">
-                    <CardTitle className="text-2xl font-semibold text-muted-foreground">
+                    <CardTitle className="text-3xl font-semibold text-muted-foreground">
                       Total
                     </CardTitle>
                     <Users className="h-12 w-12 text-brand" />
@@ -190,7 +179,7 @@ function App() {
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-6">
-                    <CardTitle className="text-2xl font-semibold text-muted-foreground">
+                    <CardTitle className="text-3xl font-semibold text-muted-foreground">
                       Active
                     </CardTitle>
                     <Hotel className="h-12 w-12 text-brand" />
@@ -206,7 +195,7 @@ function App() {
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-6">
-                    <CardTitle className="text-2xl font-semibold text-muted-foreground">
+                    <CardTitle className="text-3xl font-semibold text-muted-foreground">
                       Past
                     </CardTitle>
                     <BedDouble className="h-12 w-12 text-brand" />
@@ -222,7 +211,7 @@ function App() {
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-6">
-                    <CardTitle className="text-2xl font-semibold text-muted-foreground">
+                    <CardTitle className="text-3xl font-semibold text-muted-foreground">
                       Today
                     </CardTitle>
                     <CalendarCheck className="h-12 w-12 text-brand" />
@@ -266,7 +255,7 @@ function App() {
                     {data.map((item, index) => (
                       <div
                         key={index}
-                        className="flex items-center p-4 rounded-2xl hover:bg-emerald-200/50 transition-colors border border-neutral-200"
+                        className="flex items-center p-4 rounded-2xl hover:bg-muted/60 transition-colors border border-neutral-200"
                       >
                         <Avatar className="h-24 w-24 ring-4 ring-border">
                           <AvatarImage src={item.image} alt="Avatar" />
@@ -290,9 +279,17 @@ function App() {
                         <div className="ml-auto flex items-center gap-4">
                           {window.location.href ===
                             "https://ns.local/comanche" && (
-                            <Button className="bg-brand !text-white hover:bg-brand/90">
-                              Action
-                            </Button>
+                            <>
+                              <Button className="bg-brand text-white! hover:bg-brand/90">
+                                Action
+                              </Button>
+
+                              <a className={buttonOuterClass}>
+                                <span className={buttonInnerClass}>
+                                  Get started
+                                </span>
+                              </a>
+                            </>
                           )}
                         </div>
                       </div>
@@ -310,6 +307,28 @@ function App() {
             Invisible Hand Dashboard
           </p>
         </div>
+      </div>
+
+      {/* Floating Toggle Button */}
+      <div
+        className={`
+          fixed top-1/2 right-0 -translate-y-1/2 z-[2147483647]
+          transition-all duration-300 ease-in-out pointer-events-auto
+          ${
+            isOpen
+              ? "translate-x-full opacity-100"
+              : "translate-x-0 opacity-100"
+          }
+        `}
+      >
+        <Button
+          onClick={togglePane}
+          variant="secondary"
+          size="icon"
+          className="rounded-l-3xl rounded-r-none h-24 w-20 shadow-2xl border-l border-y border-border/50 bg-background/90  hover:bg-accent/90"
+        >
+          <PanelRightOpen className="h-12 w-12 text-brand" />
+        </Button>
       </div>
     </>
   );

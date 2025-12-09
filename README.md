@@ -8,6 +8,7 @@ This project features a glassmorphic dashboard UI injected directly into the tar
 
 *   **Modern UI**: Built with React 19 and shadcn/ui components.
 *   **Styling**: Tailwind CSS v4 with a glassmorphism aesthetic.
+*   **Style Isolation**: Sidebar renders inside a Shadow DOM with Tailwind injected inline, so host-site CSS can't leak in (or out).
 *   **Dashboard**: Interactive side pane with tabs, metrics, and data lists.
 *   **Developer Experience**: Vite-powered hot reloading and TypeScript support.
 *   **Automated Releases**: One-command semantic versioning and GitHub releases.

@@ -1,0 +1,8 @@
+Invisible Hand Codebase Notes
+
+- Purpose: Tampermonkey userscript that injects a React + Tailwind dashboard side pane into the matched site.
+- Build setup: Vite with `vite-plugin-monkey` (entry `src/main.tsx`, alias `@ -> src`). `npm run dev` for HMR in Tampermonkey dev mode, `npm run build` outputs `dist/invisiblehand.user.js`. `VITE_MATCH_URL` must be set in `.env` for the userscript match; `npm run release` uses release-it + conventional commits/GITHUB_TOKEN.
+- Runtime behavior: `src/main.tsx` now creates a shadow root (`#sp-shadow-host`) on `document.body`, injects compiled Tailwind CSS inline, and renders `<App />` inside `#sp-root` to isolate styles. Uses Tampermonkey `GM_xmlhttpRequest` to pull data from `https://dummyjson.com/users?limit=10`. Side pane toggles via floating button, auto-loads on mount, and shows metrics + user list with shadcn/ui-styled cards/tabs. An "Action" button renders only on `https://ns.local/comanche`.
+- Styling: Tailwind CSS v4 with custom CSS variables in `src/style.css`; brand color `#f15b28`; `tailwind.config.js` scopes styles under `#sp-root` and extends shadcn tokens. Tailwind CSS is imported with `?inline` and injected directly into the shadow root to keep host-site styles isolated.
+- Components/utilities: shadcn-inspired primitives in `src/components/ui` (button, card, tabs, avatar, separator) plus `cn` helper in `src/lib/utils.ts`.
+- Other files: `src/main.ts` is an unused vanilla JS/Tailwind pane prototype; `src/model/traveller.ts` and `src/data/traveller.json` hold traveller/passport sample types/data currently not wired into the UI.
