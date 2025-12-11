@@ -1,6 +1,4 @@
-/** @type {import('tailwindcss').Config} */
 export default {
-  important: '#sp-root',
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { GradiantButton } from "@/components/ui/gradiant-button";
 import {
   Card,
   CardContent,
@@ -31,9 +32,9 @@ const CONFIG = {
 };
 
 const buttonOuterClass =
-  "relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-lg font-medium text-pretty text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 shadow-lg hover:shadow-purple-500/50 dark:shadow-lg dark:hover:shadow-purple-800/80";
+  "relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-lg font-medium text-pretty text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 shadow-lg hover:shadow-purple-500/50";
 const buttonInnerClass =
-  "relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent group-hover:text-white dark:group-hover:text-white";
+  "relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-transparent group-hover:text-white";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -278,18 +279,10 @@ function App() {
                         </div>
                         <div className="ml-auto flex items-center gap-4">
                           {window.location.href ===
-                            "https://ns.local/comanche" && (
-                            <>
-                              <Button className="bg-brand text-white! hover:bg-brand/90">
-                                Action
-                              </Button>
-
-                              <a className={buttonOuterClass}>
-                                <span className={buttonInnerClass}>
-                                  Get started
-                                </span>
-                              </a>
-                            </>
+                            import.meta.env.VITE_CHECKIN_URI && (
+                            <Button variant="outline" size="lg">
+                              Pass
+                            </Button>
                           )}
                         </div>
                       </div>
