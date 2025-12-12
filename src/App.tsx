@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
 import travellerData from "./data/traveller.json";
 import {
   PanelRightOpen,
@@ -89,7 +88,7 @@ function App() {
         `}
       >
         {/* Header */}
-        <div className="p-10 pb-8 flex justify-between items-center bg-background/60">
+        <div className="absolute top-0 left-0 right-0 z-10 p-10 pb-8 flex justify-between items-center bg-background/50 backdrop-blur-md border-b border-border/50">
           <div className="flex items-center gap-8">
             <Avatar className="h-16 w-16 ring-4 ring-background shadow-xl">
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -126,10 +125,8 @@ function App() {
           </div>
         </div>
 
-        <Separator />
-
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto p-6 bg-muted/5 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
+        <div className="flex-1 overflow-y-auto p-6 pt-48 bg-muted/5 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -232,7 +229,7 @@ function App() {
                     {data.map((item, index) => (
                       <div
                         key={index}
-                        className="flex items-center p-4 rounded-2xl hover:bg-muted/60 transition-colors border border-neutral-200"
+                        className="flex items-center p-4 rounded-2xl hover:bg-muted/60 transition-colors border border-neutral-200 mb-3"
                       >
                         <Avatar className="h-12 w-12 ring-4 ring-border">
                           <AvatarImage
