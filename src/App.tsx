@@ -11,6 +11,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import travellerData from "./data/traveller.json";
+import packageJson from "../package.json";
 import {
   PanelRightOpen,
   PanelRightClose,
@@ -274,7 +275,7 @@ function App() {
         {/* Footer */}
         <div className="p-6 border-t border-border/40 bg-background/40 text-center">
           <p className="text-sm text-muted-foreground uppercase tracking-[0.2em] font-bold">
-            Invisible Hand Dashboard
+            Invisible Hand Dashboard v{packageJson.version}
           </p>
         </div>
       </div>
